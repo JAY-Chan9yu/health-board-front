@@ -17,16 +17,39 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <ul v-if="posts && posts.length">
+      <li v-for="post of posts" v-bind:key="post.id">
+        <p><strong>{{post.title}}</strong></p>
+        <p>{{post.body}}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      posts: [],
+      msg: 'This is Test'
     }
+  },
+  created () {
+    var config = {
+      // headers: {
+      //   'Access-Control-Allow-Origin': '*',
+      //   'Content-Type': 'application/json'
+      // }
+    }
+    axios.get('http://127.0.0.1:8000/users/inform/', config).then((response) => {
+      this.posts = response.data
+    })
+      .catch((e) => {
+        console.error(e)
+      })
   }
 }
 </script>
