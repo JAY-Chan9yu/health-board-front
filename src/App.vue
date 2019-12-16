@@ -1,10 +1,8 @@
 <!-- 1. 템플릿 -->
 <template>
-  <div id="app">
-    <button class="btn btn-primary">Button</button>
-    <!--<img src="./assets/logo.png">-->
-    <router-view/>
-  </div>
+   <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <!-- 2. 스크립트 -->
