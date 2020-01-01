@@ -13,7 +13,16 @@ export default {
   props: [ 'service', 'index' ],
   methods: {
     buttonClick: function () {
-      axios.get('http://127.0.0.1:8000/users/' + this.service + '/')
+      var config = {
+        headers: {
+          // baeckend 쪽에서 corsheader 미들웨어 사용해서 GET은 아래 내용 넣지 않아도 됨
+          // 'Access-Control-Allow-Origin': '*'
+          // 'Access-Control-Allow-Credentials': 'true'
+          // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+          // 'Access-Control-Allow-Headers': 'Accept, Content-Type, Authorization, Content-Length, X-Requested-With'
+        }
+      }
+      axios.get('http://localhost:8000/users/' + this.service + '/', config)
         .then(function (res) {
           window.location.href = res.data
         })

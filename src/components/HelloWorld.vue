@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'HelloWorld',
   data () {
@@ -20,20 +18,6 @@ export default {
       posts: [],
       msg: 'This is Test'
     }
-  },
-  created () {
-    var config = {
-      // headers: {
-      //   'Access-Control-Allow-Origin': '*',
-      //   'Content-Type': 'application/json'
-      // }
-    }
-    axios.get('http://127.0.0.1:8000/users/inform/', config).then((response) => {
-      this.posts = response.data
-    })
-      .catch((e) => {
-        console.error(e)
-      })
   }
 }
 </script>
